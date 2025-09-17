@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.lib.logging.EventFileLogger;
 import team.gif.lib.logging.TelemetryFileLogger;
+import team.gif.robot.commands.JoyStick;
 import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
   public static OI oi;
 
   public static Pigeon pigeon;
+  public static JoyStick joyStick;
 
   public static UI ui;
 
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
     //These should be at or near the bottom
     oi = new OI();
     ui = new UI();
+    joyStick = new JoyStick();
 
   }
 
@@ -91,7 +94,8 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+  }
 
   @Override
   public void testInit() {

@@ -1,7 +1,11 @@
 package team.gif.robot;
 
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import team.gif.robot.commands.JoyStick;
+
 public class OI {
     /*
      * Instantiate all joysticks/controllers and their buttons here
@@ -68,6 +72,7 @@ public class OI {
     public final Trigger tDPadLeft = test.povLeft();
 
     public OI() {
+        aA.whileTrue(new PrintCommand("" + Timer.getFPGATimestamp()));
         /*
          *
          * Create controller actions here
