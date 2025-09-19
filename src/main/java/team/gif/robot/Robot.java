@@ -7,9 +7,7 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import team.gif.lib.logging.EventFileLogger;
-import team.gif.lib.logging.TelemetryFileLogger;
-import team.gif.robot.commands.JoyStick;
+import team.gif.robot.subsystems.LimitSwitch;
 import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
@@ -24,7 +22,8 @@ public class Robot extends TimedRobot {
   public static OI oi;
 
   public static Pigeon pigeon;
-  public static JoyStick joyStick;
+ public static LimitSwitch limit;
+
 
   public static UI ui;
 
@@ -39,11 +38,11 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
-
+    limit = new LimitSwitch();
     //These should be at or near the bottom
     oi = new OI();
     ui = new UI();
-    joyStick = new JoyStick();
+
 
   }
 
@@ -61,9 +60,9 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-
+      System.out.println(limit.limitSwitchState());
+      System.out.println(pigeon.get360Heading());
     ui.update();
-
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
