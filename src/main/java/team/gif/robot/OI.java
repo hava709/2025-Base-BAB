@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import team.gif.robot.commands.GetFPGATimeStamp;
+import team.gif.robot.commands.TalonForward;
+import team.gif.robot.commands.TalonReverse;
 
 public class OI {
     /*
@@ -73,6 +75,8 @@ public class OI {
 
     public OI() {
         aA.onTrue(new GetFPGATimeStamp());
+        dB.whileTrue(new TalonForward());
+        dX.whileTrue(new TalonReverse());
         /*
          *
          * Create controller actions here

@@ -4,6 +4,8 @@
 
 package team.gif.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team.gif.robot.Robot;
@@ -14,8 +16,10 @@ public class TalonOne extends SubsystemBase {
 
     public TalonOne() {
         talonMotor = new TalonSRX(RobotMap.TALON_SRX_ID);
-
-
+        talonMotor.configFactoryDefault();
+        talonMotor.setNeutralMode(NeutralMode.Brake);
     }
-
+    public void talonMotorMove(double percentOutput){
+        talonMotor.set(TalonSRXControlMode.PercentOutput, percentOutput);
+    }
 }

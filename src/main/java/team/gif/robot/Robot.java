@@ -4,10 +4,12 @@
 
 package team.gif.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.TalonOne;
 import team.gif.robot.subsystems.drivers.Pigeon;
 
 /**
@@ -23,6 +25,7 @@ public class Robot extends TimedRobot {
 
   public static Pigeon pigeon;
  public static LimitSwitch limit;
+ public static TalonOne talon;
 
 
   public static UI ui;
@@ -39,6 +42,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
     limit = new LimitSwitch();
+    talon = new TalonOne();
     //These should be at or near the bottom
     oi = new OI();
     ui = new UI();
