@@ -18,7 +18,12 @@ public class SparkForward extends Command {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.spark.setVoltage(Constants.SPARK_MAX_MOTOR_VOLT);
+        if (Robot.limit.limitSwitchState()) {
+            Robot.spark.setVoltage(Constants.SPARK_MAX_MOTOR_VOLT);
+        }
+          else{  Robot.spark.setNeoPercentOutput(0.50);
+        }
+
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

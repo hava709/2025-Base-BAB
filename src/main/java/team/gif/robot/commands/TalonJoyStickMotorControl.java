@@ -7,7 +7,7 @@ public class TalonJoyStickMotorControl extends Command {
 
     public TalonJoyStickMotorControl() {
         super();
-        //addRequirements(Robot.climber); // uncomment
+        addRequirements(Robot.talon); // uncomment
     }
 
     // Called when the command is initially scheduled.

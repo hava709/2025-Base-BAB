@@ -15,6 +15,7 @@ import team.gif.robot.subsystems.LimitSwitch;
 import team.gif.robot.subsystems.SparkMaximus;
 import team.gif.robot.subsystems.TalonOne;
 import team.gif.robot.subsystems.drivers.Pigeon;
+import team.gif.robot.subsystems.drivers.Pigeon2_0;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -45,6 +46,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
+    pigeon = new Pigeon(5);
     limit = new LimitSwitch();
     talon = new TalonOne();
     talon.setDefaultCommand(new TalonJoyStickMotorControl());
@@ -71,7 +73,7 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
-    CommandScheduler.getInstance().run();
+          CommandScheduler.getInstance().run();
       System.out.println(limit.limitSwitchState());
       System.out.println(pigeon.get360Heading());
     ui.update();
