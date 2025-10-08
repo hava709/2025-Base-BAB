@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import team.gif.robot.Constants;
 import team.gif.robot.Robot;
 
-public class TalonForward extends Command {
+public class SparkRPMControl extends Command {
 
-    public TalonForward() {
+    public SparkRPMControl() {
         super();
         //addRequirements(Robot.climber); // uncomment
     }
@@ -18,11 +18,7 @@ public class TalonForward extends Command {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        if (Robot.limit.limitSwitchState()) {
-        Robot.talon.talonMotorMove(Constants.TALON_MOTOR_PERC);
-        } else {
-            Robot.talon.talonMotorMove(0.50);
-        }
+        Robot.spark.setRPM(Constants.NEO_RPM);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
@@ -34,6 +30,6 @@ public class TalonForward extends Command {
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        Robot.talon.talonMotorMove(0);
+        Robot.spark.setVoltage(0);
     }
 }

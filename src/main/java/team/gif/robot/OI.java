@@ -1,11 +1,11 @@
 package team.gif.robot;
 
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import team.gif.robot.commands.GetFPGATimeStamp;
+import team.gif.robot.commands.SolenoidSwitchState;
 import team.gif.robot.commands.SparkForward;
+import team.gif.robot.commands.SparkRPMControl;
 import team.gif.robot.commands.TalonForward;
 import team.gif.robot.commands.TalonReverse;
 
@@ -79,6 +79,8 @@ public class OI {
         dB.whileTrue(new TalonForward());
         dX.whileTrue(new TalonReverse());
         dY.whileTrue(new SparkForward());
+        dA.whileTrue(new SparkRPMControl());
+        dLBump.onTrue(new SolenoidSwitchState());
 
         /*
          *

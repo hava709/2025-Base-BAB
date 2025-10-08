@@ -15,5 +15,5 @@ package team.gif.robot;
 public final class Constants {
 public static final double TALON_MOTOR_PERC = 0.20;
 public static final double SPARK_MAX_MOTOR_VOLT = 2.5;
-
+public static final double NEO_RPM = 60;
 }
