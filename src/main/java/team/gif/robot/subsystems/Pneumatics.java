@@ -15,7 +15,7 @@ public class Pneumatics extends SubsystemBase {
 
 
     public Pneumatics() {
-        solenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, RobotMap.SOLENOID_IN_ID, RobotMap.SOLENOID_OUT_ID);
+        solenoid = new DoubleSolenoid(1,PneumaticsModuleType.CTREPCM, RobotMap.SOLENOID_IN_ID, RobotMap.SOLENOID_OUT_ID);
         solenoid.set(DoubleSolenoid.Value.kReverse);
     }
 

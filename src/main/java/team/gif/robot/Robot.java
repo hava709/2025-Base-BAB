@@ -16,6 +16,7 @@ import team.gif.robot.subsystems.LimitSwitch;
 import team.gif.robot.subsystems.Pneumatics;
 import team.gif.robot.subsystems.SparkMaximus;
 import team.gif.robot.subsystems.TalonOne;
+import team.gif.robot.subsystems.drivers.DriveTrain;
 import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.drivers.Pigeon2_0;
 
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot {
   public static TalonOne talon;
   public static SparkMaximus spark;
   public static Pneumatics solenoid;
+  public static DriveTrain drive;
 
   public static UI ui;
 
@@ -55,6 +57,7 @@ public class Robot extends TimedRobot {
     talon.setDefaultCommand(new TalonJoyStickMotorControl());
     spark = new SparkMaximus();
     solenoid = new Pneumatics();
+    drive = new DriveTrain();
     //These should be at or near the bottom
     oi = new OI();
     ui = new UI();

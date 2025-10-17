@@ -10,6 +10,7 @@ import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkLowLevel;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.ClosedLoopConfig;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.math.controller.PIDController;
@@ -29,10 +30,12 @@ public class SparkMaximus extends SubsystemBase {
 
         motor = new SparkMax(RobotMap.SPARK_MAX_ID, SparkLowLevel.MotorType.kBrushless);
         config = new SparkMaxConfig();
+        encoder = motor.getEncoder();
+        neoPID = motor.getClosedLoopController();
         config.idleMode(SparkBaseConfig.IdleMode.kBrake);
         config.inverted(true);
 
-        config.closedLoop.pid(0.0004, 0.000280, 0.0);
+        config.closedLoop.pid(0.00087, 0.00000005, 0.0);
 
 
 
@@ -46,7 +49,7 @@ public class SparkMaximus extends SubsystemBase {
         return motor.getEncoder().getVelocity();
     }
 
-    public void setRPM(double point) {
-        neoPID.setReference(Constants.NEO_RPM, SparkBase.ControlType.kVelocity);
+    public void setRPM(double RPM) {
+        neoPID.setReference(RPM, SparkBase.ControlType.kVelocity);
     }
 }

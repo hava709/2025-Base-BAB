@@ -1,34 +1,35 @@
 package team.gif.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.Command;
 import team.gif.robot.Robot;
 
-public class SolenoidSwitchState extends Command {
+public class TankDrive extends Command {
 
-    public SolenoidSwitchState() {
+    public TankDrive() {
         super();
-        addRequirements(Robot.solenoid); // uncomment
+        addRequirements(Robot.drive); // uncomment
     }
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {
-        Robot.solenoid.toggleState();
-    }
+    public void initialize() {}
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
-    public void execute() {}
+    public void execute() {
+        double rightposition = Robot.oi.driver.getRightY();
+        double leftposition = -Robot.oi.driver.getLeftY();
+
+        Robot.drive.tankDrive(rightposition, leftposition);
+    }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called when the command ends or is interrupted.
     @Override
-    public void end(boolean interrupted) {
-    }
+    public void end(boolean interrupted) {Robot.drive.tankDrive(0,0);}
 }

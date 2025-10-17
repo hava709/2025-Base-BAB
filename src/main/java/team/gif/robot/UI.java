@@ -22,7 +22,7 @@ public class UI {
         ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("BAB2025");
     shuffleboardTab.addBoolean("State", Robot.limit::limitSwitchState).withWidget(BuiltInWidgets.kBooleanBox);
     shuffleboardTab.addDouble("Heading", Robot.pigeon::get360Heading).withWidget(BuiltInWidgets.kGyro);
-    shuffleboardTab.addDouble("NeoRPM", Robot.spark::getRPM).withWidget(BuiltInWidgets.kEncoder);
+    shuffleboardTab.addDouble("NeoRPM", Robot.spark::getRPM);
     }
 
     /**
