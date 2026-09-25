@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team.gif.robot.RobotMap;
 
 public class DriveTrain extends SubsystemBase {
-    private WPI_TalonSRX rearRightCIM;
-    private WPI_TalonSRX frontLeftCIM;
-    private WPI_TalonSRX frontRightCIM;
-    private WPI_TalonSRX rearLeftCIM;
+    public WPI_TalonSRX rearRightCIM;
+    public WPI_TalonSRX frontLeftCIM;
+    public WPI_TalonSRX frontRightCIM;
+    public WPI_TalonSRX rearLeftCIM;
 
     private DifferentialDrive driveTrain;
     public DriveTrain() {

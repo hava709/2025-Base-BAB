@@ -18,7 +18,7 @@ public class TalonJoyStickMotorControl extends Command {
     @Override
     public void execute() {
        double motorPercControl = Robot.oi.driver.getRightY();
-       Robot.talon.talonMotorMove(-motorPercControl);
+       Robot.talon.talonMotorMove(motorPercControl);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

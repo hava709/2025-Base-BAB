@@ -3,9 +3,9 @@ package team.gif.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class GetFPGATimeStamp extends Command {
+public class GetFPGATimeStaMp extends Command {
 
-    public GetFPGATimeStamp() {
+    public GetFPGATimeStaMp() {
         super();
         //addRequirements(Robot.climber); // uncomment
     }

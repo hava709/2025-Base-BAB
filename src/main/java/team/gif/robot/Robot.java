@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import jdk.swing.interop.DispatcherWrapper;
 import team.gif.robot.commands.TalonJoyStickMotorControl;
 import team.gif.robot.commands.TalonReverse;
+import team.gif.robot.commands.autos.ForwardAuto;
 import team.gif.robot.subsystems.LimitSwitch;
 import team.gif.robot.subsystems.Pneumatics;
 import team.gif.robot.subsystems.SparkMaximus;
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
   public static SparkMaximus spark;
   public static Pneumatics solenoid;
   public static DriveTrain drive;
+  public static Command autonamousCommand;
 
   public static UI ui;
 
@@ -58,6 +60,8 @@ public class Robot extends TimedRobot {
     spark = new SparkMaximus();
     solenoid = new Pneumatics();
     drive = new DriveTrain();
+    autonamousCommand = new ForwardAuto();
+
     //These should be at or near the bottom
     oi = new OI();
     ui = new UI();
