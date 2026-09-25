@@ -1,8 +1,14 @@
 package team.gif.robot;
 
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import team.gif.robot.subsystems.LimitSwitch;
 
 public class UI {
+
+
     /**
      *  Widgets (e.g. gyro, text, True/False flags),
      *  buttons (e.g. SmartDashboard.putData("Reset", new ResetHeading()); ),
@@ -13,7 +19,10 @@ public class UI {
      *  and save file as "YYYY elastic-layout.json"
      */
     public UI() {
-        
+        ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("BAB2025");
+    shuffleboardTab.addBoolean("State", Robot.limit::limitSwitchState).withWidget(BuiltInWidgets.kBooleanBox);
+    shuffleboardTab.addDouble("Heading", Robot.pigeon::get360Heading).withWidget(BuiltInWidgets.kGyro);
+    shuffleboardTab.addDouble("NeoRPM", Robot.spark::getRPM);
     }
 
     /**

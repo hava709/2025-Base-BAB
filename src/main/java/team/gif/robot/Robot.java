@@ -4,12 +4,22 @@
 
 package team.gif.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import team.gif.lib.logging.EventFileLogger;
-import team.gif.lib.logging.TelemetryFileLogger;
+import jdk.swing.interop.DispatcherWrapper;
+import team.gif.robot.commands.TalonJoyStickMotorControl;
+import team.gif.robot.commands.TalonReverse;
+import team.gif.robot.commands.autos.ForwardAuto;
+import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.Pneumatics;
+import team.gif.robot.subsystems.SparkMaximus;
+import team.gif.robot.subsystems.TalonOne;
+import team.gif.robot.subsystems.drivers.DriveTrain;
 import team.gif.robot.subsystems.drivers.Pigeon;
+import team.gif.robot.subsystems.drivers.Pigeon2_0;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -23,6 +33,12 @@ public class Robot extends TimedRobot {
   public static OI oi;
 
   public static Pigeon pigeon;
+  public static LimitSwitch limit;
+  public static TalonOne talon;
+  public static SparkMaximus spark;
+  public static Pneumatics solenoid;
+  public static DriveTrain drive;
+  public static Command autonamousCommand;
 
   public static UI ui;
 
@@ -37,10 +53,21 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
+    pigeon = new Pigeon(RobotMap.PIGEON_ID);
+    limit = new LimitSwitch();
+    talon = new TalonOne();
+    talon.setDefaultCommand(new TalonJoyStickMotorControl());
+    spark = new SparkMaximus();
+    solenoid = new Pneumatics();
+    drive = new DriveTrain();
+    autonamousCommand = new ForwardAuto();
 
     //These should be at or near the bottom
     oi = new OI();
     ui = new UI();
+
+
+
 
   }
 
@@ -57,10 +84,10 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
-    CommandScheduler.getInstance().run();
-
+          CommandScheduler.getInstance().run();
+      System.out.println(limit.limitSwitchState());
+      System.out.println(pigeon.get360Heading());
     ui.update();
-
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
@@ -91,7 +118,8 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+  }
 
   @Override
   public void testInit() {
